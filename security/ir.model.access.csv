@@ -1,0 +1,6 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_ucad_ucad1,ucad.ucad,model_ucad_etudiant1,,1,1,1,1
+access_ucad_ucad2,ucad.ucad,model_ucad_maison,,1,1,1,1
+access_ucad_ucad3,ucad.ucad,model_ucad_appartement,,1,1,1,1
+access_ucad_ucad4,ucad.ucad,model_ucad_loact,,1,1,1,1
+access_ucad_ucad5,ucad.ucad,model_ucad_payment,,1,1,1,1

@@ -1,0 +1,317 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+     <menuitem id="menu-maison" name="2xam immobilier"/> 
+     
+
+
+    <record id="action-maison-list" model="ir.actions.act_window">
+        <field name="name">les maisons</field>
+        <field name="res_model">ucad.maison</field>
+        <field name="view_mode">tree,form</field>
+    </record> 
+
+    <record id="action-appartement-list" model="ir.actions.act_window">
+        <field name="name">les appartements</field>
+        <field name="res_model">ucad.appartement</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <record id="action-locataire-list" model="ir.actions.act_window">
+        <field name="name">les locatires</field>
+        <field name="res_model">ucad.loact</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    
+    <record id="action-payement-list" model="ir.actions.act_window">
+        <field name="name">les payememnts</field>
+        <field name="res_model">ucad.payment</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    
+    <menuitem id="menu-maison-list"
+        name="Maisons"
+        parent="menu-maison"
+        action="action-maison-list"
+    />
+
+    <menuitem id="menu-locataire-list"
+        name="locataire"
+        parent="menu-maison"
+        action="action-locataire-list"
+    />
+        <menuitem id="menu-payements-list"
+        name="payements"
+        parent="menu-maison"
+        action="action-payement-list"
+    />
+    <menuitem id="menu-etudiant-list"
+        name="appartement"
+        parent="menu-maison"
+        action="action-appartement-list"
+    />
+
+    <record id="view_tree_maison" model='ir.ui.view'>
+        <field name="name">ucad.etudiant.tree</field>
+        <field name="model">ucad.maison</field>
+        <field name="arch" type="xml">
+
+            <tree>
+                <field name="nom"/>
+                <field name="arrondissement"/>
+                <field name="proprietair"/>
+               <field name="photo1" widget="image" class="oe_avatar" options="{'size': [100, 100]}"/>
+               <field name="photo2" widget="image" class="oe_avatar" options="{'size': [100, 100]}"/>
+               <field name="photo3" widget="image" class="oe_avatar" options="{'size': [100, 100]}"/>
+            </tree>
+
+        </field>
+    </record> 
+    
+
+    <record id="view_form_maison" model='ir.ui.view'>
+            <field name="name">ucad.etudiant.form</field>
+            <field name="model">ucad.maison</field>
+            <field name="arch" type="xml">
+
+            <form>
+                <notebook>
+                    <page string ='detaille'>
+                        <group>
+                            <field name="nom"/>
+                            <field name="arrondissement"/>
+                            <field name="proprietair"/>
+                        </group>
+                    </page>
+                    <page string ='les photos de la maison'>
+                
+                        <group>
+                            <field name="photo1" widget="image" class="oe_avatar" options="{'size': [100, 100]}"/>
+                            <field name="photo2" widget="image" class="oe_avatar" options="{'size': [100, 100]}"/>
+                            <field name="photo3" widget="image" class="oe_avatar" options="{'size': [100, 100]}"/>
+                    
+                        </group>
+            
+                    </page>
+                    <page string ='les appartemtements de la maison'>
+                
+                        <group>
+                            <field name="appartement_ids" widget="one2many_tags">
+                            <tree>
+                                <field name="appartemment"/>
+                                <field name="prix"/>
+                                <field name="locataire"/>
+                                <field name="photo1" widget="image" class="oe_avatar" options="{'size': [100, 100]}"/>
+                            </tree>
+                            </field>
+                        </group>
+            
+                    </page>
+                    <page string ='les locataires de la maison '>
+                
+                        <group>
+                            <field name="locataires" widget="one2many_tags">
+                            <tree>
+                                        <field name="nom"/>
+                                        <field name="prenom"/>
+                                        <field name="numero_tel"/>
+                                        <field name="photo_loca" widget="image" class="oe_avatar" options="{'size': [100, 100]}"/>
+                                        
+                            </tree>
+                            </field>
+                        </group>
+            
+                    </page>
+                    <page string="les factures de la maison">
+                        <field name="factures" widget="one2many_tags">
+                            <tree>
+                                <field name="appartement"/>
+                                <field name="prix"/>
+                                <field name="locataire"/>
+                                <field name="mois"/>
+                                <field name="year"/>
+                            </tree>
+                        </field>
+                    </page>
+                    
+                    
+                </notebook>
+            </form>
+
+        </field>
+    </record>
+
+
+    <record id="view_tree_appartement" model='ir.ui.view'>
+        <field name="name">ucad.etudiant.tree</field>
+        <field name="model">ucad.appartement</field>
+        <field name="arch" type="xml">
+
+            <tree>
+                <field name="appartemment"/>
+                <field name="prix"/>
+                <field name="nombre_chambre"/>
+                <field name="locataire"/>
+                <field name="photo1" widget="image" class="oe_avatar" options="{'size': [100, 100]}"/>
+                <field name="photo2" widget="image" class="oe_avatar" options="{'size': [100, 100]}"/>
+                <field name="photo3" widget="image" class="oe_avatar" options="{'size': [100, 100]}"/>
+                
+            </tree>
+
+        </field>
+    </record>
+
+    <record id="view_form_appartement" model='ir.ui.view'>
+        <field name="name">ucad.etudiant.form</field>
+        <field name="model">ucad.appartement</field>
+        <field name="arch" type="xml">
+
+            <form>
+                <notebook>
+                    <page string="informations">
+                        <group>
+                            <field name="appartemment"/>
+                            <field name="prix"/>
+                            <field name="maison"/> 
+                            <field name="nombre_chambre"/>
+                            <field name="locataire"/>
+                        </group>
+                    </page>
+                    <page string="les photos de l'appartement">
+                        <group>
+                            <field name="photo1" widget="image" class="oe_avatar" options="{'size': [100, 100]}"/>
+                            <field name="photo2" widget="image" class="oe_avatar" options="{'size': [100, 100]}"/>
+                            <field name="photo3" widget="image" class="oe_avatar" options="{'size': [100, 100]}"/>
+                        </group>
+                    </page>
+                </notebook>
+                
+            </form>
+
+        </field>
+    </record>
+
+
+    <record id="view_locataire_appartement" model='ir.ui.view'>
+        <field name="name">ucad.etudiant.tree</field>
+        <field name="model">ucad.loact</field>
+        <field name="arch" type="xml">
+
+            <tree>
+                        <field name="prenom"/>
+                        <field name="nom"/>
+                        <field name="numero_tel"/>
+                        <field name="photo_loca" widget="image" class="oe_avatar" options="{'size': [100, 100]}"/>
+                        <field name="photo_id_card_1" widget="image" class="oe_avatar" options="{'size': [100, 100]}"/>
+                        <field name="photo_id_card_2" widget="image" class="oe_avatar" options="{'size': [100, 100]}"/>
+          
+
+            </tree>
+
+        </field>
+    </record>
+
+
+    <record id="view_locataire_appartement_form" model='ir.ui.view'>
+        <field name="name">formulaire locataire</field>
+        <field name="model">ucad.loact</field>
+        <field name="arch" type="xml">
+
+            <form>
+                <notebook>
+                    <page string="Informations">
+                        <group>
+                            <field name="prenom"/>
+                            <field name="nom"/>
+                            <field name="numero_tel"/>
+                            <field name="email"/>
+                            <field name="appartement"/>
+                            <field name="photo_loca" widget="image" class="oe_avatar" options="{'size': [100, 100]}"/>
+                        </group>
+                    
+                    </page>
+                    <page string="appartements">
+                        <field name="appartement">
+                            <tree>
+                                <field name="appartemment"/>
+                                <field name="prix"/>
+                                <field name="maison"/>
+                            </tree>
+                        </field>
+                    </page>
+                    <page string="les factures ">
+                        <field name="payements" widget="one2many_tags">
+                            <tree>
+                                <field name="date"/>
+                                <field name="appartement"/>
+                            </tree>
+                        </field>
+                    </page>
+                
+                    <page string="Carte d'identite">
+                        <group>
+                            <field name="photo_id_card_1" widget="image" class="oe_avatar" options="{'size': [100, 100]}"/>
+                            <field name="photo_id_card_2" widget="image" class="oe_avatar" options="{'size': [100, 100]}"/>
+                        </group>
+                    </page>
+                    <page string="les mois payes ">
+                        <field name="payements" widget="one2many_tags">
+                            <tree>
+                                <field name="date"/>
+                                <field name="mois"/>
+                                <field name="year"/>
+                                <field name="prix"/>
+                            </tree>
+                        </field>
+                    </page>
+                </notebook>
+            </form>
+
+        </field>
+    </record>
+
+
+    <record id="view_payement_tre" model='ir.ui.view'>
+        <field name="name">ucad.etudiant.tree</field>
+        <field name="model">ucad.payment</field>
+        <field name="arch" type="xml">
+
+            <tree>
+                <field name="appartement"/>        
+                <field name="date"/>  
+                <field name="prix"/>
+                <field name="maison"/>
+                <field name="locataire"/>
+
+            </tree>
+
+        </field>
+    </record>
+
+
+    <record id="action-payement-form" model='ir.ui.view'>
+        <field name="name">ucad.etudiant.form</field>
+        <field name="model">ucad.payment</field>
+        <field name="arch" type="xml">
+
+            <form>
+                <group>
+                    <field name="date"/>
+                    <field name="appartement"/>
+                    <field name="mois"/>
+                    <field name="year"/>
+                    <field name="verif"/>
+                </group>
+                <group>
+                    <field name="maison"/>
+                    <field name="locataire"/>
+                    <field name="prix"/>
+                    <field name="email" />
+                    <field name="numero_tel"/>
+                </group>
+            </form>
+
+        </field>
+    </record>
+    
+</odoo>

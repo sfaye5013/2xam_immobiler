@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<odoo>
+    <template id="payment_report_template">
+        <t t-call="web.basic_layout">
+            <div class="page">
+                <h1>Payment Report</h1>
+                <table class="table table-condensed">
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Locataire</th>
+                            <th>Appartement</th>
+                            <th>Maison</th>
+                            <th>Prix</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <t t-foreach="docs" t-as="payment">
+                            <tr>
+                                <td><t t-esc="payment.date"/></td>
+                                <td><t t-esc="payment.locataire.name"/></td>
+                                <td><t t-esc="payment.appartement.appartemment"/></td>
+                                <td><t t-esc="payment.maison.nom"/></td>
+                                <td><t t-esc="payment.prix"/></td>
+                            </tr>
+                        </t>
+                    </tbody>
+                </table>
+            </div>
+        </t>
+    </template>
+</odoo>
