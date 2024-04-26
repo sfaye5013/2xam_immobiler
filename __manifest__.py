@@ -14,6 +14,15 @@
         et les locataires, ainsi que d'envoyer les factures par e-mail apres chaque payment.
         Je souhaite continuer à améliorer ce projet, donc après la correction, 
         pouvez-vous me donner des suggestions pour l'améliorer davantage
+
+
+        Voici un schéma simplifié de votre base de données avec les relations entre les différentes entités :
+        Propriétaire 1 ---- * Maison
+        Maison 1 ---- * Appartement
+        Appartement * ---- 1 Locataire
+        Locataire * ---- * Appartement
+        Paiement * ---- 1 Locataire
+        Paiement * ---- 1 Appartement
     """,
 
     'author': "souleymane FAYE",
